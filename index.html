@@ -6,6 +6,7 @@
 
     <link href="bower_components/roboto-fontface/css/roboto-fontface.css" rel="stylesheet" />
     <link href="bower_components/semantic/dist/semantic.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
 
     <!-- libs -->
     <script src="bower_components/angular/angular.min.js"></script>
@@ -20,6 +21,17 @@
 </head>
 
 <body ng-app="whatday" ng-controller="mainCtrl">
-    {{cycleDay}}
+
+    <div class="darken">
+    <div class="ui statistic inverted full">
+            <div class="label">
+                HI, TODAY IS A
+            </div>
+            <div class="value">
+                 <i class="angle left icon"></i> {{cycleDay}}
+            <i class="angle right icon"></i>
+            </div>
+    </div>
+        </div>
 </body>
 </html>
