@@ -1,29 +1,45 @@
-
 var app = angular.module('whatday', ['whatday.services'])
 
-app.controller('mainCtrl', function ($scope, calendarService) {
+app.controller('mainCtrl', function ($scope, calendarService, weatherService) {
     
     $scope.cycleDay = "";
-    $scope.nextWeekDay = "";
-    $scope.nextDay = "";
 
-    calendarService.getDayEvents(moment().add(0, "days")).then(function (response) {
-        var events = calendarService.parseEvents(response);
-        $scope.cycleDay = calendarService.getCycleDay(events);
-        getNextDay(1);
-    });
+    $scope.theDay = "";
 
+
+    $scope.tempDegree = "";
+
+    getNextDay(0);
+    console.log("swag")
     function getNextDay(offset) {
         calendarService.getDayEvents(moment().add(offset, "days")).then(function (response) {
             var events = calendarService.parseEvents(response);
+
             if (calendarService.getCycleDay(events) == "No school") {
                 return getNextDay(offset + 1);
             } else {
-                $scope.nextWeekDay = moment().add(offset, "days").format("dddd");
-                $scope.nextDay = calendarService.getCycleDay(events);
+                var nextWeekDay = moment().add(offset, "days").format("dddd");
+                var nextDay = calendarService.getCycleDay(events);
+                $scope.cycleDay = nextDay
+                if (offset == 0) {
+                    $scope.theDay = "Hi, today is a"
+                } else {
+                    $scope.theDay = nextWeekDay + "will be a"
+                }
+
             }
         });
     }
+
+
+
+    //Get the current weather for Ottawa, parse the Temperature, and output it in a read
+    weatherService.getCurrentWeather("Ottawa").then(function (response) {
+        var temp = weatherService.parseTemp(response)
+        temp -= 273.15
+        $scope.tempDegree = Math.round(temp)
+        console.log(response)
+    })
     
 
 
