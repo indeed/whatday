@@ -6,11 +6,10 @@ app.controller('mainCtrl', function ($scope, calendarService, weatherService) {
 
     $scope.theDay = "";
 
-
     $scope.tempDegree = "";
 
     getNextDay(0);
-    console.log("swag")
+
     function getNextDay(offset) {
         calendarService.getDayEvents(moment().add(offset, "days")).then(function (response) {
             var events = calendarService.parseEvents(response);
@@ -24,14 +23,11 @@ app.controller('mainCtrl', function ($scope, calendarService, weatherService) {
                 if (offset == 0) {
                     $scope.theDay = "Hi, today is a"
                 } else {
-                    $scope.theDay = nextWeekDay + "will be a"
+                    $scope.theDay = nextWeekDay + " will be a"
                 }
-
             }
         });
     }
-
-
 
     //Get the current weather for Ottawa, parse the Temperature, and output it in a read
     weatherService.getCurrentWeather("Ottawa").then(function (response) {
@@ -40,9 +36,5 @@ app.controller('mainCtrl', function ($scope, calendarService, weatherService) {
         $scope.tempDegree = Math.round(temp)
         console.log(response)
     })
-    
-
-
-
 
 });

@@ -5,7 +5,6 @@ var gapiCalendarGET = "https://www.googleapis.com/calendar/v3/calendars/ocdsb.ca
 
 //OpenWeatherMap get Ottawa current weather
 var openWeatherMapGET = "http://api.openweathermap.org/data/2.5/weather?appid=98b37b7c96a6ac5edd049e870239a033"
-//var openWeatherMapKey = "&key=98b37b7c96a6ac5edd049e870239a033"
 
 app.factory('calendarService', function ($http) {
     return {
@@ -38,10 +37,8 @@ app.factory('calendarService', function ($http) {
 
 })
 
-
 app.factory('weatherService', function($http){
     return {
-
         //Get current weather
         getCurrentWeather: function(city){
             return $http.get(openWeatherMapGET, {
@@ -53,10 +50,8 @@ app.factory('weatherService', function($http){
         },
 
         //parse temperature
-
         parseTemp: function(data){
             return angular.fromJson(data).data.main.temp
         }
     }
-
 })
