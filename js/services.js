@@ -1,7 +1,7 @@
 ﻿var app = angular.module('whatday.services', []);
 
 //Google API get public calendar
-var gapiCalendarGET = "https://www.googleapis.com/calendar/v3/calendars/ocdsb.ca_9dul7c0nu4poqkgbhsfu0qe2t0@group.calendar.google.com/events?key=AIzaSyB4JbJ8B3jPBr-uwqLkF6p-qD7lzBIadgw";
+var gapiCalendarGET = "https://www.googleapis.com/calendar/v3/calendars/ocdsb.ca_783e3p4smqg0s5nn1mtu921340@group.calendar.google.com/events?key=AIzaSyB4JbJ8B3jPBr-uwqLkF6p-qD7lzBIadgw";
 
 //OpenWeatherMap get Ottawa current weather
 var openWeatherMapGET = "http://api.openweathermap.org/data/2.5/weather?appid=98b37b7c96a6ac5edd049e870239a033"
