@@ -15,7 +15,7 @@ app.controller('mainCtrl', function ($scope, calendarService, weatherService) {
             var events = calendarService.parseEvents(response);
 
             if (calendarService.getCycleDay(events) == "No school") {
-                return getNextDay(offset + 1);
+                return (offset < 30) ? (getNextDay(offset + 1)) : null;
             } else {
                 var nextWeekDay = moment().add(offset, "days").format("dddd");
                 var nextDay = calendarService.getCycleDay(events);
