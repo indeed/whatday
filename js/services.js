@@ -12,7 +12,7 @@ app.factory('calendarService', function ($http) {
         //Parses event data to find the school cycle day
         getCycleDay: function (events) {
             for (var event in events) {
-                if (events[event].summary.substring(0, 3) == "Day") {
+                if (events[event].summary && events[event].summary.substring(0, 3) == "Day") {
                     return events[event].summary;
                 }
             }
